@@ -1,0 +1,99 @@
+# Yaml is white-space sensitive (use 2 spaces to indent).
+
+window/bar:
+  providers: ['self']
+  width: '{{ self.args.MONITOR_WIDTH }}'
+  height: '60'
+  position_x: '{{ self.args.MONITOR_X }}'
+  position_y: '{{ self.args.MONITOR_Y }}'
+  z_order: 'normal'
+  shown_in_taskbar: false
+  resizable: false
+  global_styles: |
+    @import "https://www.nerdfonts.com/assets/css/webfont.css";
+  styles: |
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;  # Keep GlazeWM centered, images on sides
+    align-items: center;
+    height: 100%;
+    color: rgb(255 255 255 / 90%);
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    padding: 4px 24px;
+    background: transparent;
+    border: none;
+
+  group/left:
+    styles: |
+      justify-self: start;
+      overflow: hidden;
+
+    template/custom_image_left:
+      styles: |
+        margin-right: 10px;
+        width: 50px;  # Ensure width and height are equal to form a perfect circle
+        height: 50px; 
+        clip-path: circle(50%);  # Enforce a circular clipping
+        overflow: hidden;
+        object-fit: cover;  # Ensure the image covers the container without stretching
+      template: |
+        <img src="data:image/jpeg;base64,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" alt="Madara">
+
+  group/center:
+    styles: |
+      justify-self: center;
+      display: flex;
+      align-items: center;
+
+    template/glazewm_workspaces:
+      providers: ['glazewm']
+      styles: |
+        display: flex;
+        align-items: center;
+
+        .workspace {
+          background: rgba(255, 255, 255, 0.2);
+          clip-path: circle(50%);  # Enforce a circular clipping
+          margin-right: 4px;
+          padding: 10px;
+          width: 30px;  # Ensure width and height are equal to form a circle
+          height: 30px;
+          color: rgb(255 255 255 / 90%);
+          border: none;
+          cursor: pointer;
+          transition: background 0.3s ease;
+
+          &.displayed {
+            background: rgba(255, 255, 255, 0.3);
+          }
+
+          &.focused,
+          &:hover {
+            background: rgba(51, 51, 51, 0.2);
+          }
+        }
+      template: |
+        @for (workspace of glazewm.currentWorkspaces) {
+          <button
+            class="workspace {{ workspace.hasFocus ? 'focused' : '' }} {{ workspace.isDisplayed ? 'displayed' : '' }}"
+            id="{{ workspace.name }}"
+          >
+            {{ workspace.displayName ?? workspace.name }}
+          </button>
+        }
+
+  group/right:
+    styles: |
+      justify-self: end;
+      overflow: hidden;
+
+    template/custom_image_right:
+      styles: |
+        margin-left: 10px;
+        width: 50px;  # Ensure width and height are equal to form a perfect circle
+        height: 50px;
+        clip-path: circle(50%);  # Enforce a circular clipping for the image
+        overflow: hidden;
+      template: |
+        <img src="data:image/jpeg;base64,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">
+
